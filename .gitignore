@@ -1,0 +1,5 @@
+/src.zip
+/javaCompiler...args
+*.class
+/temp.folder
+/bin
