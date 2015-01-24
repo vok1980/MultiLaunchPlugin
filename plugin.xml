@@ -27,6 +27,13 @@
           id="com.voksoft.multilauncherplugin.ui.tabMain"
           name="com.voksoft.multilauncherplugin.ui.tabMain">
     	</tab>
+    	<tab
+          class="org.eclipse.debug.ui.CommonTab"
+          group="com.voksoft.multilauncherplugin.ui.launchConfigurationTabGroup"
+          id="com.voksoft.multilauncherplugin.ui.tabCommon"
+          name="org.eclipse.debug.ui.CommonTab">
+          <placement after="com.voksoft.multilauncherplugin.ui.tabMain"/>
+    	</tab>
 	</extension>
 
 	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
