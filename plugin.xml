@@ -20,14 +20,13 @@
           name="com.voksoft.multilauncherplugin.ui.tabMain">
     	</tab>
 	</extension>
- <extension
-       point="org.eclipse.debug.ui.launchConfigurationTabGroups">
-    <launchConfigurationTabGroup
-          class="com.voksoft.multilauncherplugin.ui.AbstractLaunchConfigurationTabGroup"
-          id="com.voksoft.multilauncherplugin.ui.launchConfigurationTabGroup"
-          type="com.voksoft.multilauncherplugin.multilunchApplication">
-    </launchConfigurationTabGroup>
- </extension>
 
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+    	<launchConfigurationTabGroup
+        	class="com.voksoft.multilauncherplugin.ui.LaunchConfigurationTabGroup"
+          	id="com.voksoft.multilauncherplugin.ui.launchConfigurationTabGroup"
+          	type="com.voksoft.multilauncherplugin.multilunchApplication">
+    	</launchConfigurationTabGroup>
+	</extension>
 
 </plugin>
