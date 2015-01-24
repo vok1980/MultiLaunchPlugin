@@ -6,27 +6,30 @@ import org.eclipse.debug.ui.ILaunchConfigurationTab;
 
 public class LaunchConfigurationTabGroup extends
 		AbstractLaunchConfigurationTabGroup {
+	
+	private enum TabIdxs {
+		TI_COMMON,
+		
+		TI_COUNT,
+	};
 
 	public LaunchConfigurationTabGroup() {
 		ILaunchConfigurationTab[] tabs = getTabs();
 		assert( tabs == null );
 		
-		tabs = new ILaunchConfigurationTab[1];
-		tabs[0] = new org.eclipse.debug.ui.CommonTab();
+		tabs = new ILaunchConfigurationTab[ TabIdxs.TI_COUNT.ordinal() ];
+		tabs[TabIdxs.TI_COMMON.ordinal()] = new org.eclipse.debug.ui.CommonTab();
 		
 		setTabs(tabs);
 	}
 
 	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
-		
-		int a = 56;
-		a ++;
-		
+				
 		ILaunchConfigurationTab[] tabs = getTabs();
 		assert( tabs != null );
 		
-		dialog.setActiveTab( tabs[0] );		
+		dialog.setActiveTab( tabs[ TabIdxs.TI_COMMON.ordinal() ] );		
 
 	}
 
