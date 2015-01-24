@@ -12,6 +12,14 @@
 	   </launchConfigurationType>
 	</extension>
 	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage
+			icon="icons/sample.gif"
+			configTypeID="com.voksoft.multilauncherplugin.multilunchApplication"
+			id="com.voksoft.multilauncherplugin.multilunchApplication.image">
+		</launchConfigurationTypeImage>
+	</extension>
+	
 	<extension point="org.eclipse.debug.ui.launchConfigurationTabs">
     	<tab
           class="com.voksoft.multilauncherplugin.ui.LaunchConfigurationTabMain"
