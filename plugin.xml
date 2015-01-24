@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
-<plugin>
+<plugin>	
+	<extension point = "org.eclipse.debug.core.launchConfigurationTypes">
+	   <launchConfigurationType
+	   	   id="com.voksoft.multilauncherplugin.multilunchApplication"
+		   name="Multi Launch"
+		   delegate="com.voksoft.multilauncherplugin.MultiLaunchConfigurationDelegate"
+		   modes= "run, debug"
+		   sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+	       sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
+	   </launchConfigurationType>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabs">
+    	<tab
+          class="com.voksoft.multilauncherplugin.ui.LaunchConfigurationTabMain"
+          group="com.voksoft.multilauncherplugin.ui.launchConfigurationTabGroup"
+          id="com.voksoft.multilauncherplugin.ui.tabMain"
+          name="com.voksoft.multilauncherplugin.ui.tabMain">
+    	</tab>
+	</extension>
+ <extension
+       point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+    <launchConfigurationTabGroup
+          class="com.voksoft.multilauncherplugin.ui.AbstractLaunchConfigurationTabGroup"
+          id="com.voksoft.multilauncherplugin.ui.launchConfigurationTabGroup"
+          type="com.voksoft.multilauncherplugin.multilunchApplication">
+    </launchConfigurationTabGroup>
+ </extension>
 
 
 </plugin>
