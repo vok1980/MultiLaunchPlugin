@@ -1,23 +1,21 @@
 package com.voksoft.multilauncherplugin.ui;
 
+
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.swt.widgets.Text;
 
 
 
@@ -32,78 +30,69 @@ public class LaunchConfigurationTabMain extends AbstractLaunchConfigurationTab {
 		
 		Composite comp = new Composite(parent, SWT.NONE);
 		setControl(comp);
-		GridLayout topLayout = new GridLayout();
-		topLayout.verticalSpacing = 0;
-		topLayout.numColumns = 2;
-		comp.setLayout(topLayout);
+		
+		FormLayout layout = new FormLayout();
+		layout.marginHeight = 5;
+		layout.marginWidth = 5;
+		
+		comp.setLayout(layout);
 		comp.setFont(font);
 		
-//		createVerticalSpacer(comp, 3);
-		
-		Table table = new Table(comp, SWT.BORDER | SWT.V_SCROLL);
-		
-		GridData gd = new GridData(GridData.FILL_BOTH);
-		table.setLayoutData(gd);		
-		
+		Table table = new Table(comp, SWT.BORDER | SWT.V_SCROLL);		
 		table.setLinesVisible (true);
 		table.setHeaderVisible (true);
 				
-//		table.getColumnCount();
+		m_addButton = new Button(comp, SWT.PUSH); 
+		m_addButton.setText("&Add");	
+		m_removeButton = new Button(comp, SWT.PUSH); 
+		m_removeButton.setText("&Remove");
+		
+		FormData formDataAddBtn = new FormData();
+		formDataAddBtn.width = 100;
+		formDataAddBtn.top = new FormAttachment(0, 0);
+		formDataAddBtn.right = new FormAttachment(100, -3);
+		m_addButton.setLayoutData(formDataAddBtn);
+		
+		FormData formDataRemoveBtn = new FormData();
+		formDataRemoveBtn.width = formDataAddBtn.width;
+		formDataRemoveBtn.top = new FormAttachment(m_addButton, 5);
+		formDataRemoveBtn.right = new FormAttachment(100, -3);
+		m_removeButton.setLayoutData(formDataRemoveBtn);
+		
+		FormData formDataTable = new FormData();
+		formDataTable.top = new FormAttachment(0, 0);
+		formDataTable.left = new FormAttachment(0, 0);		
+		formDataTable.bottom = new FormAttachment(100,-5);
+		formDataTable.right = new FormAttachment(m_addButton, -7, SWT.LEFT);
+		
+		table.setLayoutData(formDataTable);		
+		
+		m_addButton.addSelectionListener ( new SelectionAdapter()
+		{
+			public void widgetSelected(SelectionEvent e) {
+				int t = 67;
+			}
+		});
 		
 		String[] titles = {"Name", "Mode"};
-		for (int i=0; i<titles.length; i++) {
+		for (int i = 0; i < titles.length; i++) {
 			TableColumn column = new TableColumn (table, SWT.CENTER);
-			column.setText (titles [i]);
+			column.setText (titles[i]);
 		}	
 		
 		for (int i=0; i<4; i++) {
 			TableItem item = new TableItem (table, SWT.NONE);
 			item.setText (0, "Item " + i);
 			item.setText (1, "Item2 " + i);
-			
-	//		TableItem item2 = new TableItem (table, 1);
-		//	item2.setText ("Item 2 " + i);
 		}
 
 		table.setFont(font);
 		
-		for (int i=0; i<titles.length; i++) {
+		for (int i = 0; i < titles.length; i++) {
 			table.getColumn (i).pack ();
 		}
-		
-//		Label programLabel = new Label(comp, SWT.NONE);
-//		programLabel.setText("&Program:");
-//		GridData gd = new GridData(GridData.BEGINNING);
-//		programLabel.setLayoutData(gd);
-//		programLabel.setFont(font);
-//		
-//		fProgramText = new Text(comp, SWT.SINGLE | SWT.BORDER);
-//		gd = new GridData(GridData.FILL_HORIZONTAL);
-//		fProgramText.setLayoutData(gd);
-//		fProgramText.setFont(font);
-//		fProgramText.addModifyListener(new ModifyListener() {
-//			public void modifyText(ModifyEvent e) {
-//				updateLaunchConfigurationDialog();
-//			}
-//		});
-				
-		
-		m_addButton = createPushButton(comp, "&Add", null); 
-		m_addButton.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-			//	browsePDAFiles();
-			}
-		});
-		
-		m_removeButton = createPushButton(comp, "&Remove", null); 
-		
-		GridData gdAdd = new GridData(GridData.HORIZONTAL_ALIGN_END);
-		GridData gdRemove = new GridData(GridData.END);
-		gdRemove.horizontalAlignment = GridData.END;
-		m_addButton.setLayoutData(gdAdd);
-		m_removeButton.setLayoutData(gdAdd);
-				
 	}
+	
 
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
