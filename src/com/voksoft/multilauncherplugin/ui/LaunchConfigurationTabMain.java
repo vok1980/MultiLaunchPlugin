@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
+import com.voksoft.multilauncherplugin.ui.SelectConfigDialog;
 
 
 public class LaunchConfigurationTabMain extends AbstractLaunchConfigurationTab {
@@ -70,7 +71,9 @@ public class LaunchConfigurationTabMain extends AbstractLaunchConfigurationTab {
 		m_addButton.addSelectionListener ( new SelectionAdapter()
 		{
 			public void widgetSelected(SelectionEvent e) {
-				int t = 67;
+				new SelectConfigDialog( getShell() ) {
+					
+				}.open() ;				
 			}
 		});
 		
